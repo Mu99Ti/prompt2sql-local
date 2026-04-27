@@ -1,6 +1,6 @@
 # SQL Agent (Local Text-to-SQL, SQL-Only)
 
-`sql-agent` is a local Text-to-SQL generator that converts natural-language questions into SQL using a local Ollama model (default: `gemma3:4b`).
+`sql-agent` is a local Text-to-SQL generator that converts natural-language questions into SQL using a local Ollama model (default: `gemma4:e4b`).
 
 It is intentionally a controlled generation service:
 
@@ -224,7 +224,7 @@ python scripts/extract_schema_mssql.py --server localhost --database Northwind -
 4. Start Ollama and ensure model exists.
 
 ```bash
-ollama run gemma3:4b
+ollama run gemma4:e4b
 ```
 
 5. Run CLI.
@@ -258,7 +258,7 @@ python -m app.main.cli --question "..." --single-line
 - `SQL_AGENT_ENV` default `development`
 - `SQL_AGENT_SERVICE_NAME` default `sql-agent`
 - `SQL_AGENT_OLLAMA_URL` default `http://localhost:11434`
-- `SQL_AGENT_MODEL` default `gemma3:4b`
+- `SQL_AGENT_MODEL` default `gemma4:e4b`
 - `SQL_AGENT_TEMPERATURE` default `0.1`
 - `SQL_AGENT_SQL_DIALECT` default `sqlite` (`sqlite` or `tsql`)
 - `SQL_AGENT_SCHEMA_PATH` default `schemas/northwind_schema.json`
