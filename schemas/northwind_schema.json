@@ -1,0 +1,229 @@
+{
+  "tables": {
+    "Categories": {
+      "columns": {
+        "CategoryID": "INTEGER",
+        "CategoryName": "TEXT",
+        "Description": "TEXT",
+        "Picture": "BLOB"
+      },
+      "foreign_keys": []
+    },
+    "CustomerCustomerDemo": {
+      "columns": {
+        "CustomerID": "TEXT",
+        "CustomerTypeID": "TEXT"
+      },
+      "foreign_keys": [
+        {
+          "from": "CustomerTypeID",
+          "to_table": "CustomerDemographics",
+          "to": "CustomerTypeID"
+        },
+        {
+          "from": "CustomerID",
+          "to_table": "Customers",
+          "to": "CustomerID"
+        }
+      ]
+    },
+    "CustomerDemographics": {
+      "columns": {
+        "CustomerTypeID": "TEXT",
+        "CustomerDesc": "TEXT"
+      },
+      "foreign_keys": []
+    },
+    "Customers": {
+      "columns": {
+        "CustomerID": "TEXT",
+        "CompanyName": "TEXT",
+        "ContactName": "TEXT",
+        "ContactTitle": "TEXT",
+        "Address": "TEXT",
+        "City": "TEXT",
+        "Region": "TEXT",
+        "PostalCode": "TEXT",
+        "Country": "TEXT",
+        "Phone": "TEXT",
+        "Fax": "TEXT"
+      },
+      "foreign_keys": []
+    },
+    "EmployeeTerritories": {
+      "columns": {
+        "EmployeeID": "INTEGER",
+        "TerritoryID": "TEXT"
+      },
+      "foreign_keys": [
+        {
+          "from": "TerritoryID",
+          "to_table": "Territories",
+          "to": "TerritoryID"
+        },
+        {
+          "from": "EmployeeID",
+          "to_table": "Employees",
+          "to": "EmployeeID"
+        }
+      ]
+    },
+    "Employees": {
+      "columns": {
+        "EmployeeID": "INTEGER",
+        "LastName": "TEXT",
+        "FirstName": "TEXT",
+        "Title": "TEXT",
+        "TitleOfCourtesy": "TEXT",
+        "BirthDate": "DATE",
+        "HireDate": "DATE",
+        "Address": "TEXT",
+        "City": "TEXT",
+        "Region": "TEXT",
+        "PostalCode": "TEXT",
+        "Country": "TEXT",
+        "HomePhone": "TEXT",
+        "Extension": "TEXT",
+        "Photo": "BLOB",
+        "Notes": "TEXT",
+        "ReportsTo": "INTEGER",
+        "PhotoPath": "TEXT"
+      },
+      "foreign_keys": [
+        {
+          "from": "ReportsTo",
+          "to_table": "Employees",
+          "to": "EmployeeID"
+        }
+      ]
+    },
+    "Order Details": {
+      "columns": {
+        "OrderID": "INTEGER",
+        "ProductID": "INTEGER",
+        "UnitPrice": "NUMERIC",
+        "Quantity": "INTEGER",
+        "Discount": "REAL"
+      },
+      "foreign_keys": [
+        {
+          "from": "ProductID",
+          "to_table": "Products",
+          "to": "ProductID"
+        },
+        {
+          "from": "OrderID",
+          "to_table": "Orders",
+          "to": "OrderID"
+        }
+      ]
+    },
+    "Orders": {
+      "columns": {
+        "OrderID": "INTEGER",
+        "CustomerID": "TEXT",
+        "EmployeeID": "INTEGER",
+        "OrderDate": "DATETIME",
+        "RequiredDate": "DATETIME",
+        "ShippedDate": "DATETIME",
+        "ShipVia": "INTEGER",
+        "Freight": "NUMERIC",
+        "ShipName": "TEXT",
+        "ShipAddress": "TEXT",
+        "ShipCity": "TEXT",
+        "ShipRegion": "TEXT",
+        "ShipPostalCode": "TEXT",
+        "ShipCountry": "TEXT"
+      },
+      "foreign_keys": [
+        {
+          "from": "ShipVia",
+          "to_table": "Shippers",
+          "to": "ShipperID"
+        },
+        {
+          "from": "CustomerID",
+          "to_table": "Customers",
+          "to": "CustomerID"
+        },
+        {
+          "from": "EmployeeID",
+          "to_table": "Employees",
+          "to": "EmployeeID"
+        }
+      ]
+    },
+    "Products": {
+      "columns": {
+        "ProductID": "INTEGER",
+        "ProductName": "TEXT",
+        "SupplierID": "INTEGER",
+        "CategoryID": "INTEGER",
+        "QuantityPerUnit": "TEXT",
+        "UnitPrice": "NUMERIC",
+        "UnitsInStock": "INTEGER",
+        "UnitsOnOrder": "INTEGER",
+        "ReorderLevel": "INTEGER",
+        "Discontinued": "TEXT"
+      },
+      "foreign_keys": [
+        {
+          "from": "SupplierID",
+          "to_table": "Suppliers",
+          "to": "SupplierID"
+        },
+        {
+          "from": "CategoryID",
+          "to_table": "Categories",
+          "to": "CategoryID"
+        }
+      ]
+    },
+    "Regions": {
+      "columns": {
+        "RegionID": "INTEGER",
+        "RegionDescription": "TEXT"
+      },
+      "foreign_keys": []
+    },
+    "Shippers": {
+      "columns": {
+        "ShipperID": "INTEGER",
+        "CompanyName": "TEXT",
+        "Phone": "TEXT"
+      },
+      "foreign_keys": []
+    },
+    "Suppliers": {
+      "columns": {
+        "SupplierID": "INTEGER",
+        "CompanyName": "TEXT",
+        "ContactName": "TEXT",
+        "ContactTitle": "TEXT",
+        "Address": "TEXT",
+        "City": "TEXT",
+        "Region": "TEXT",
+        "PostalCode": "TEXT",
+        "Country": "TEXT",
+        "Phone": "TEXT",
+        "Fax": "TEXT",
+        "HomePage": "TEXT"
+      },
+      "foreign_keys": []
+    },
+    "Territories": {
+      "columns": {
+        "TerritoryID": "TEXT",
+        "TerritoryDescription": "TEXT",
+        "RegionID": "INTEGER"
+      },
+      "foreign_keys": [
+        {
+          "from": "RegionID",
+          "to_table": "Regions",
+          "to": "RegionID"
+        }
+      ]
+    }
+  }
+}
